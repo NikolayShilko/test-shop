@@ -2,11 +2,15 @@ require 'rubygems'
 require 'sinatra'
 require 'sqlite3'
 #require 'sinatra/reloader'
+def get_db
+ 	return SQLite3::Database.new 'barbershop.db'
+ end
 configure do
-	@db=SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
-	"id"	INTEGER,
-	"username"	TEXT,
+	db=get_db
+	db.execute 'CREATE TABLE IF NOT EXISTS "Users"
+
+	("username"	TEXT,
+
 	"phone"	TEXT,
 	"datestamp"	TEXT,
 	"barber"	TEXT,
@@ -34,7 +38,7 @@ end
 
  @username=params[:username]
  @phone=params[:phone]
- @datetime=params[:datetime]
+ @datestamp=params[:datetime]
  @barber=params[:barber]
  @color=params[:color]
  #if @username==""        #Вариант номер один
@@ -48,7 +52,12 @@ end
  	return erb :visit
  end
 end
+db=get_db
+db.execute 'insert into Users(username,phone,datestamp,barber,color ) 
+                                                                          
+values ( ?,?,?,?,?)',[@username,@phone,@datestamp,@barber,@color]        #запись данных в базу данных
 
 
  	erb "ОК  данные получены #{@username};#{@phone};#{@datetime};Мастер#{@barber};цвет#{@color}"
  end
+ 
