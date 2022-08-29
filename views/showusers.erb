@@ -1,6 +1,16 @@
 
  
 <table class="table table-striped">
+	<thead>                          <!-- добавляем названия столбцов таблицы -->
+		<tr>
+			<th>Имя</th>
+			<th>Телфон</th>
+			<th>День записи</th>
+			<th>Парикмахер</th>
+			<th>Цвет</th>
+		</tr>
+	</thead>
+	<body>                         <!--тело таблицы -->
 	<% @result.each do |row| %>
  <tr>
 <td><%= row['username'] %></td>	
@@ -10,6 +20,7 @@
 <td><%= row['color'] %> </td>
 </tr>
 <% end %>
+</body>
 </table>	
 
 
