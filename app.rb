@@ -33,6 +33,12 @@ end
 get '/visit' do
 	erb :visit
 end
+get '/showusers' do
+  db=get_db
+  db.results_as_hash=true #база данных в виде хэша.стандарт в виде массива
+  @result=db.execute 'select *from Users order by id desc'
+  erb :showusers
+end
  
  post '/visit' do
 

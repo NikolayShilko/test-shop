@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <label>Когда вас ждать?</label>
-    <input name="datetime" type="text" class="form-control " placeholder="Введите дату и время">
+    <input  input id="datetimepicker" type="text" name="datetime" type="text" class="form-control " placeholder="Введите дату и время">
   </div>
    
     <div class="form-group">
@@ -51,9 +51,10 @@
 <script type="text/javascript">
   $ (function (){
     $('#color').simplecolorpicker();
+    //$('#datetimepicker').datetimepicker(); //плагин календаря (не удалось запустить)
   });
-
 </script>
+  
 <script type="text/javascript">                // Цвет поля ввода где id=aaa
 //  $('#aaa').css('background-color', "yellow");
 
